@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Практический курс OSINT: уроки, кейсы, инструменты и исследовательские отчёты.">
+  <title>OSINT Практика</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23171d31'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%23c6b5ff' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23c6b5ff' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='3' fill='%23c6b5ff'/%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="core.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Перейти к содержимому</a>
+  <aside class="sidebar" aria-label="Главная навигация">
+    <a class="brand" href="#home"><span class="brand-mark">◎</span><span>OSINT<span class="brand-caption">ПРАКТИКА</span></span></a>
+    <div class="nav-caption">ПРОСТРАНСТВО ИССЛЕДОВАТЕЛЯ</div>
+    <nav id="navigation"></nav>
+    <div class="sidebar-bottom"><span class="online-dot"></span> На вашем устройстве<p>Учитесь. Проверяйте.<br>Делайте выводы.</p><span class="version">Версия 0.1 · локальный курс</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <div class="breadcrumbs">Академия <span>/</span> <span id="breadcrumb">Обзор</span></div>
+      <form id="global-search" role="search"><label class="sr-only" for="global-query">Поиск по курсу</label><input id="global-query" type="search" placeholder="Найти урок, кейс, инструмент…" autocomplete="off"><button class="search-submit" aria-label="Найти">⌕</button></form>
+      <span class="profile" title="Локальный профиль">Я</span>
+    </header>
+    <main id="main" tabindex="-1"></main>
+    <footer class="footer"><span>OSINT Практика</span><span>Источники → доказательства → выводы</span><a href="#about">О приложении и данных</a></footer>
+  </div>
+  <dialog id="document-dialog" aria-labelledby="document-title"><div class="dialog-top"><h2 id="document-title"></h2><button class="icon-button" data-close-dialog aria-label="Закрыть документ">✕</button></div><div id="document-body" class="prose"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <input type="file" id="backup-file" accept="application/json,.json" hidden>
+  <noscript>Для приложения необходим JavaScript. Включите его в настройках браузера.</noscript>
+</body>
+</html>

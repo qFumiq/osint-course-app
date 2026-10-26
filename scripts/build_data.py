@@ -18,6 +18,7 @@ def build():
     cases = []
     for m in re.finditer(r'^## (C\d{2})\. (.+)\n([\s\S]*?)(?=^## |\Z)', read('CASE_CATALOG.md'), re.M):
         cid, title, body = m.groups()
+        body = re.sub(r' Локальный кандидат[^\n]*', '', body)
         local = 'учебный пакет готов' in body
         upcoming = 'спецификация' in body
         urls = re.findall(r'\[[^]]+\]\((https://[^)]+)\)', body)
@@ -37,7 +38,7 @@ def build():
     data.update(version='0.1.0', cases=cases, tools=tools, documents=[dict(id=i,title=t,body=read(p)) for i,t,p in docs])
     assert len(data['lessons']) == 27 and len(cases) == 19 and len(tools) == 25
     encoded = json.dumps(data, ensure_ascii=False, indent=2)
-    assert 'qzomb' not in encoded and 'C:\\Documents' not in encoded
+    assert not re.search(r'\b[A-Za-z]:[\\/]', encoded)
     (ROOT / 'app').mkdir(exist_ok=True)
     (ROOT / 'app/data.js').write_text('window.COURSE_DATA = '+encoded+';\n', encoding='utf-8')
     print('Built 27 lessons, 19 case cards and 25 tools.')

@@ -16,15 +16,23 @@ APP_DIRECTORY = Path(__file__).resolve().parent / "app"
 class CourseHandler(SimpleHTTPRequestHandler):
     """Serve the app directory only, never the project or source library."""
 
-    def do_GET(self):
+    def allowed_path(self):
         candidate = Path(self.translate_path(self.path)).resolve()
         if not candidate.is_relative_to(APP_DIRECTORY.resolve()):
             self.send_error(403)
-            return
+            return False
         if candidate.is_dir() and not (candidate / "index.html").exists():
             self.send_error(404)
-            return
-        super().do_GET()
+            return False
+        return True
+
+    def do_GET(self):
+        if self.allowed_path():
+            super().do_GET()
+
+    def do_HEAD(self):
+        if self.allowed_path():
+            super().do_HEAD()
 
     def end_headers(self):
         self.send_header("X-Content-Type-Options", "nosniff")
