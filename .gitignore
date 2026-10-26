@@ -1,0 +1,27 @@
+# Local research and personal source archive
+/tmp/
+/OSINT_APP_PLAN.md
+/content/LOCAL_MATERIALS.md
+/content/local_inventory.json
+/C:/
+
+# Local user data and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.log
+reports/
+backups/
+
+# Generated packages and test artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+test-results/
+playwright-report/
+*.zip
+.DS_Store
+Thumbs.db
